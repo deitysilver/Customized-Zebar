@@ -182,29 +182,6 @@
                 </div>
               )}
 
-              {output.cpu && (
-                <div className="cpu">
-                  <i className="nf nf-oct-cpu"></i>
-
-                  {/* Change the text color if the CPU usage is high. */}
-                  <span
-                    className={output.cpu.usage > 85 ? 'high-usage' : ''}
-                  >
-                    {Math.round(output.cpu.usage)}%
-                  </span>
-                </div>
-              )}
-
-              {output.battery && (
-                <div className="battery">
-                  {/* Show icon for whether battery is charging. */}
-                  {output.battery.isCharging && (
-                    <i className="nf nf-md-power_plug charging-icon"></i>
-                  )}
-                  {getBatteryIcon(output.battery)}
-                  {Math.round(output.battery.chargePercent)}%
-                </div>
-              )}
 
               {output.weather && (
                 <div className="weather">
