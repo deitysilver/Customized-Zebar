@@ -190,8 +190,12 @@
               )}
               
               <div className="date"> 
-                {output.date?.formatted}
-              </div>
+		{output.date?.formatted.split(' ').map((part, index) => (
+		  <span key={index} className={part.includes(':') || part.toLowerCase().includes('am') || part.toLowerCase().includes('pm') ? 'accent' : ''}>
+		    {part}{index < output.date.formatted.split(' ').length - 1 ? ' ' : ''}
+		  </span>
+		))}
+	      </div>
             </div>
           </div>
         );
