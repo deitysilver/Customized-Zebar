@@ -56,13 +56,11 @@ body,
 .binding-mode,
 .tiling-direction,
 .memory,
+.network,
+.weather,
 .cpu,
 .battery {
-  margin-right: 20px;
-}
-
-.network {
-  margin-right: 10px;
+  margin-right: 15px;
 }
 
 .workspaces {
