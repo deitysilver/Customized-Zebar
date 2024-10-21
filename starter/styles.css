@@ -63,6 +63,10 @@ body,
   margin-right: 15px;
 }
 
+.date {
+  margin-left: 5px;
+}
+
 .workspaces {
   display: flex;
   align-items: center;
