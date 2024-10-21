@@ -35,7 +35,7 @@
         network: { type: 'network' },
         glazewm: { type: 'glazewm' },
         cpu: { type: 'cpu' },
-        date: { type: 'date', formatting: 't MM-d-y' },
+        date: { type: 'date', formatting: 'MM-d-y t' },
         battery: { type: 'battery' },
         memory: { type: 'memory' },
         weather: { type: 'weather' },
@@ -45,10 +45,29 @@
 
       function App() {
         const [output, setOutput] = useState(providers.outputMap);
+        const [wifiStatus, setWifiStatus] = useState("Off");
 
         useEffect(() => {
           providers.onOutput(() => setOutput(providers.outputMap));
         }, []);
+        
+        useEffect(() => {
+	  providers.onOutput(() => {
+	    setOutput(providers.outputMap);
+
+	    const networkOutput = providers.outputMap.network;
+	    if (networkOutput && networkOutput.defaultInterface) {
+	      if (networkOutput.defaultInterface.type === 'wifi') {
+		setWifiStatus("On");
+	      } else {
+		setWifiStatus("Off");
+	      }
+	    } else {
+	      setWifiStatus("Off");
+	    }
+	  });
+	}, []);
+
 
         // Get icon to show for current network status.
         function getNetworkIcon(networkOutput) {
@@ -75,7 +94,7 @@
               }
             default:
               return (
-                <i className="nf nf-md-wifi_strength_off_outline"></i>
+		<i className="nf nf-md-wifi_strength_off_outline"></i>
               );
           }
         }
@@ -152,6 +171,7 @@
               {output.network && (
                 <div className="network">
                   {getNetworkIcon(output.network)}
+                  {wifiStatus}
                 </div>
               )}
 
