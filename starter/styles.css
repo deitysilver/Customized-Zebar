@@ -14,19 +14,30 @@ body {
   font-family: ui-monospace, monospace;
   font-size: 12px;
   overflow: hidden;
+  background: transparent;
 }
 
 html,
 body,
 #root {
   height: 100%;
+  background: transparent;
+}
+
+.root-blur {
+  background: rgba(88, 39, 245, 0.4);
+  filter: blur(40px);
+  width: 100%;
+  height: 100%;
+  position: absolute;
 }
 
 #root {
   border-bottom: 1px solid rgb(255 255 255 / 5%);
-  background: linear-gradient(rgb(0 0 0 / 90%), rgb(5 2 20 / 85%));
+  background: linear-gradient(rgb(0 0 0 / 75%), rgb(5 2 20 / 70%));
+    
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .app {
@@ -122,6 +133,6 @@ body,
 }
 
 .accent {
-  color: rgb(115 130 175 / 95%);
-  font-weight: bold;
+  color: rgba(115, 130, 175, 0.95);
+  font-weight: 800;
 }
